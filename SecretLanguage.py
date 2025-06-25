@@ -1,4 +1,7 @@
-import pyperclip
+try:
+    import pyperclip
+except ImportError:
+    pyperclip = None
 
 
 def encode_str(inputString):
@@ -18,7 +21,10 @@ def encode_str(inputString):
         )
         encoded_string_list.append(word)
     final_string = " ".join(encoded_string_list)
-    pyperclip.copy(final_string)
+    # pyperclip.copy(final_string)
+    if pyperclip:
+        pyperclip.copy(final_string)
+
     return final_string
 
 
@@ -33,7 +39,9 @@ def decode_str(inputString):
             word = word[0:-1]
         decoded_string_list.append(word)
     final_string = " ".join(decoded_string_list)
-    pyperclip.copy(final_string)
+    # pyperclip.copy(final_string)
+    if pyperclip:
+        pyperclip.copy(final_string)
 
     return final_string
 
